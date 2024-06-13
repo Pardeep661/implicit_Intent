@@ -16,7 +16,6 @@ class MainActivity : AppCompatActivity() {
     var email_button : Button? = null
     var sms_button : Button? = null
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -30,19 +29,29 @@ class MainActivity : AppCompatActivity() {
         call_button?.setOnClickListener(){
           val intent = Intent(Intent.ACTION_DIAL)
             intent.setData(Uri.parse("tel:+918968531504"))
+
             startActivities(arrayOf(intent))
         }
 
         email_button?.setOnClickListener(){
-            val intent = Intent(Intent.ACTION_SEND)
+
+            val intent = Intent(Intent.ACTION_SENDTO)
+            intent.setData(Uri.parse("mailto:maheyp666@gmail.com"))
+            intent.putExtra(Intent.EXTRA_EMAIL , "maheyp666@gmail.com",)
+            intent.putExtra(Intent.EXTRA_SUBJECT,"Error issue")
+            intent.putExtra(Intent.EXTRA_TEXT,"page is not opening")
+
+            startActivities(arrayOf(intent))
 
         }
 
         sms_button?.setOnClickListener()
         {
-            val intent = Intent(Intent.ACTION_SEND)
-            intent.setData(Uri.parse("sms:8968531504"))
+            val intent = Intent(Intent.ACTION_SENDTO)
+            intent.setData(Uri.parse("smsto:8968531504"))
             intent.putExtra("sms_body","hello")
+            
+            startActivities(arrayOf(intent))
         }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
