@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         sms_button = findViewById(R.id.sms)
 
         call_button?.setOnClickListener(){
+
           val intent = Intent(Intent.ACTION_DIAL)
             intent.setData(Uri.parse("tel:+918968531504"))
 
@@ -36,11 +37,11 @@ class MainActivity : AppCompatActivity() {
         email_button?.setOnClickListener(){
 
             val intent = Intent(Intent.ACTION_SENDTO)
-            intent.setData(Uri.parse("mailto:maheyp666@gmail.com"))
-            intent.putExtra(Intent.EXTRA_EMAIL , "maheyp666@gmail.com",)
+            intent.setData(Uri.parse("mailto:"))
+            intent.putExtra(Intent.EXTRA_EMAIL , arrayOf("maheyp666@gmail.com"))
             intent.putExtra(Intent.EXTRA_SUBJECT,"Error issue")
-            intent.putExtra(Intent.EXTRA_TEXT,"page is not opening")
-
+            intent.putExtra(Intent.EXTRA_TEXT,"crash when click on 'email me' button")
+            
             startActivities(arrayOf(intent))
 
         }
@@ -50,7 +51,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(Intent.ACTION_SENDTO)
             intent.setData(Uri.parse("smsto:8968531504"))
             intent.putExtra("sms_body","hello")
-            
+
             startActivities(arrayOf(intent))
         }
 
